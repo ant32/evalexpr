@@ -839,7 +839,7 @@ pub(crate) fn tokens_to_operator_tree(tokens: Vec<Token>) -> EvalexprResult<Node
                 result
             },
             Token::Float(float) => Some(Node::new(Operator::value(Value::Float(float)))),
-            Token::Int(int) => Some(Node::new(Operator::value(Value::Int(int)))),
+            Token::Int(int) => Some(Node::new(Operator::value(Value::Float(int as f64)))),
             Token::Boolean(boolean) => Some(Node::new(Operator::value(Value::Boolean(boolean)))),
             Token::String(string) => Some(Node::new(Operator::value(Value::String(string)))),
         };

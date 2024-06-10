@@ -298,8 +298,15 @@ impl Operator {
                         ))
                     }
                 } else {
+                    let arg2 = arguments[1].as_number()?;
+                    if arg2 == 0. {
+                        return Err(EvalexprError::division_error(
+                            arguments[0].clone(),
+                            arguments[1].clone(),
+                        ))
+                    }
                     Ok(Value::Float(
-                        arguments[0].as_number()? / arguments[1].as_number()?,
+                        arguments[0].as_number()? / arg2,
                     ))
                 }
             },
